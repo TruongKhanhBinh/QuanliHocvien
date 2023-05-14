@@ -1,0 +1,46 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package quanlyhocvien;
+
+public class LopHocOnline extends LopHoc{
+    private String linkHocTrucTuyen;
+
+    public LopHocOnline(String maSo, String ten, String giaoVien, int soLuongHocVien, String ngayBatDau, String ngayKetThuc, String phongHoc, String linkHocTrucTuyen) {
+        super(maSo, ten, giaoVien, soLuongHocVien, ngayBatDau, ngayKetThuc, phongHoc);
+        this.linkHocTrucTuyen = linkHocTrucTuyen;
+    }
+    
+    public LopHocOnline()
+    {
+        super();
+    }
+     public String getLinkHocTrucTuyen() {
+        return linkHocTrucTuyen;
+    }
+
+    public void setLinkHocTrucTuyen(String linkHocTrucTuyen) {
+        this.linkHocTrucTuyen = linkHocTrucTuyen;
+    }
+    
+    @Override
+     public void NhapLopHoc()
+    {
+        System.out.println("Nhap link: "); this.linkHocTrucTuyen = sc.nextLine();
+        super.NhapLopHoc();
+       
+    }
+
+    @Override
+    public String toString() {
+        return "LopHocOnline{" +
+                "maLop='" + getMaSo() + '\'' +
+                ", ten='" + getTen() + '\'' +
+                ", Giao Vien= '" + getGiaoVien() + '\'' +
+                ", ngayBatDau='" + getNgayBatDau() + '\'' +
+                ", ngayKetThuc='" + getNgayKetThuc() + '\'' +
+                ", linkHocTrucTuyen='" + linkHocTrucTuyen + '\'' +
+                '}';
+    }
+}
