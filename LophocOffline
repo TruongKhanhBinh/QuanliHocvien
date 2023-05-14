@@ -1,0 +1,46 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package quanlyhocvien;
+
+public class LopHocOffline extends LopHoc{
+    private String Coso;
+
+    public LopHocOffline(String maSo, String ten, String giaoVien, int soLuongHocVien, String ngayBatDau, String ngayKetThuc, String phongHoc, String Coso) {
+        super(maSo, ten, giaoVien, soLuongHocVien, ngayBatDau, ngayKetThuc, phongHoc);
+        this.Coso = Coso;
+    }
+    
+    public LopHocOffline()
+    {
+        super();
+    }
+     public String getCoSo() {
+        return Coso;
+    }
+
+    public void setCoSo(String Coso) {
+        this.Coso = Coso;
+    }
+    
+    @Override
+     public void NhapLopHoc()
+    {
+        System.out.println("Nhap co so: "); this.Coso = sc.nextLine();
+        super.NhapLopHoc();
+       
+    }
+
+    @Override
+    public String toString() {
+        return "LopHocOffline{" +
+                "ma Lop='" + getMaSo() + '\'' +
+                ", ten='" + getTen() + '\'' +
+                ", Giao Vien= '" + getGiaoVien() + '\'' +
+                ", ngay Bat Dau='" + getNgayBatDau() + '\'' +
+                ", ngay Ket Thuc='" + getNgayKetThuc() + '\'' +
+                ", Co so='" + Coso + '\'' +
+                '}';
+    }
+}
