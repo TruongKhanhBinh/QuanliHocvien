@@ -1,0 +1,102 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package quanlyhocvien;
+
+
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class QuanLyHocVien {
+    static Scanner sc = new Scanner(System.in);
+    private ArrayList<HocVien> danhSachHocVien = new ArrayList<>();
+    private int soLuongHocVien;
+
+    public QuanLyHocVien() {
+        danhSachHocVien = new ArrayList<>();
+        soLuongHocVien = 0;
+    }
+
+    public void themHocVien(HocVien hocVien) {
+        danhSachHocVien.add(hocVien);
+        soLuongHocVien++;
+    }
+
+    public void xoaHocVien(String maHocVien) {
+        for (HocVien hocVien : danhSachHocVien) {
+            if (hocVien.getMaSo().equals(maHocVien)) {
+                danhSachHocVien.remove(hocVien);
+                soLuongHocVien--;
+                break;
+            }
+        }
+    }
+
+    public HocVien timKiemHocVien(String maHocVien) {
+        for (HocVien hocVien : danhSachHocVien) {
+            if (hocVien.getMaSo().equals(maHocVien)) {
+                System.out.println(hocVien.toString());
+                return hocVien;
+            }
+        }
+        return null;
+    }
+
+    public void inDanhSachHocVien() {
+        System.out.println("Danh sach hoc vien:");
+        for (HocVien hocVien : danhSachHocVien) {
+            System.out.println(hocVien.toString());
+        }
+    }
+    public void init(){
+        int select = 0; 
+        boolean isTrue = true;
+        
+        
+        while(isTrue)
+            {
+                System.out.println("Quan ly hoc vien");
+                System.out.println("1. Them thong tin hoc vien");
+                System.out.println("2. Tim kiem thong tin hoc vien");
+                System.out.println("3. Xoa thong tin hoc vien");
+                System.out.println("4. Xuat danh sach hoc vien");
+                System.out.println("5. Thoat");
+                select = sc.nextInt();
+
+
+                 switch (select) {
+                    case 1: 
+                        int count = 0;
+                        System.out.println("Them bao nhieu hoc vien"); count = sc.nextInt();
+                        for(int i = 0; i < count; i++)
+                        {
+                            HocVien x = new HocVien();
+                            x.nhapHV();
+                            themHocVien(x);
+                        }
+                        break;
+                    case 2: 
+                        sc.nextLine();
+                        String msct;
+                        System.out.println("Nhap ma so hoc vien can tim: "); msct = sc.nextLine();
+                        timKiemHocVien(msct);
+                        break;
+                    case 3: 
+                        sc.nextLine();
+                        String mscx;
+                        System.out.println("Nhap ma so hoc vien can xoa: "); mscx = sc.nextLine();
+                        xoaHocVien(mscx);
+                        break;
+                    case 4: 
+                        inDanhSachHocVien();
+                        break;
+                    case 5:
+                        isTrue = false;
+                        break;
+                }
+            }
+        
+        }        
+    }
+
