@@ -1,0 +1,270 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package quanlyhocvien;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+public class QuanLyLopHoc {
+    static Scanner sc = new Scanner(System.in);
+    private ArrayList<LopHoc> lopHocList;
+    private ArrayList<LopHocOnline> lophoconline = new ArrayList();
+    private ArrayList<LopHocOffline> lophocoffline = new ArrayList();
+
+    public QuanLyLopHoc() {
+        this.lopHocList = new ArrayList<>();
+    }
+
+    public void themLopHocOnline(LopHocOnline lopHoc) {
+        lophoconline.add(lopHoc);
+    }
+
+    public void xoaLopHocOnline(String mscs) {
+        for (int i = 0; i < lophoconline.size(); i++) {
+            if (!lophoconline.get(i).getMaSo().equals(mscs)){
+                System.out.println("ko tim thay");
+            }
+            else{
+                lophoconline.remove(i);
+                System.out.println("Da xoa!");
+            }
+        }
+    }
+
+    public void inDanhSachLopHocOnline() {
+        System.out.println("Danh sach lop hoc");
+        for (LopHocOnline lopHoc : lophoconline) {
+            System.out.println(lopHoc);
+        }
+    }
+     public void inDanhSachHocVienOnline() {
+        for (LopHocOnline lopHoc : lophoconline) {
+            lopHoc.inDanhSachHocVien();
+        }
+    }
+    public void timKiemLopHocOnline(String tenLop) {
+    for (LopHocOnline lopHoc : lophoconline) {
+        if (lopHoc.getTen().equalsIgnoreCase(tenLop)) {
+            System.out.println(lopHoc);
+            return;
+        }
+    }
+    System.out.println("Khong tim thay lop hoc");
+    }
+
+    public void timKiemHocVienOnline(String tenHocVien) {
+        System.out.println("Ket qua tim kiem hoc vien " + tenHocVien);
+        for (LopHocOnline lopHoc : lophoconline) {
+            for (HocVien hocVien : lopHoc.getHocVienList()) {
+                if (hocVien.getTen().equalsIgnoreCase(tenHocVien)) {
+                    System.out.println(hocVien);
+                }
+            }
+        }
+    }
+
+    public void inBangDiemLopHocOnline(String tenLop) {
+        for (LopHocOnline lopHoc : lophoconline) {
+            if (lopHoc.getTen().equalsIgnoreCase(tenLop)) {
+                System.out.println("Bang diem lop " + tenLop);
+                for (HocVien hocVien : lopHoc.getHocVienList()) {
+                    System.out.println(hocVien.getTen() + " - " + hocVien.getDiem());
+                }
+                return;
+            }
+        }
+        System.out.println("Khong tim thay lop hoc");
+    }
+//    ===========================================================================================
+    public void themLopHocOffline(LopHocOffline lopHoc) {
+        lophocoffline.add(lopHoc);
+    }
+
+    public void xoaLopHocOffline(String mscs) {
+        for (int i = 0; i < lophocoffline.size(); i++) {
+            if (!lophocoffline.get(i).getMaSo().equals(mscs)){
+                System.out.println("ko tim thay");
+            }
+            else{
+                lophocoffline.remove(i);
+                System.out.println("Da xoa!");
+            }
+        }
+    }
+
+    public void inDanhSachLopHocOffline() {
+        System.out.println("Danh sach lop hoc");
+        for (LopHocOffline lopHoc : lophocoffline) {
+            System.out.println(lopHoc);
+        }
+    }
+     public void inDanhSachHocVienOffline() {
+        for (LopHocOffline lopHoc : lophocoffline) {
+            lopHoc.inDanhSachHocVien();
+        }
+    }
+    public void timKiemLopHocOffline(String tenLop) {
+    for (LopHocOffline lopHoc : lophocoffline) {
+        if (lopHoc.getTen().equalsIgnoreCase(tenLop)) {
+            System.out.println(lopHoc);
+            return;
+        }
+    }
+    System.out.println("Khong tim thay lop hoc");
+    }
+
+    public void timKiemHocVienOffline(String tenHocVien) {
+        System.out.println("Ket qua tim kiem hoc vien " + tenHocVien);
+        for (LopHocOffline lopHoc : lophocoffline) {
+            for (HocVien hocVien : lopHoc.getHocVienList()) {
+                if (hocVien.getTen().equalsIgnoreCase(tenHocVien)) {
+                    System.out.println(hocVien);
+                }
+            }
+        }
+    }
+
+    public void inBangDiemLopHocOffline(String tenLop) {
+        for (LopHocOffline lopHoc : lophocoffline) {
+            if (lopHoc.getTen().equalsIgnoreCase(tenLop)) {
+                System.out.println("Bang diem lop " + tenLop);
+                for (HocVien hocVien : lopHoc.getHocVienList()) {
+                    System.out.println(hocVien.getTen() + " - " + hocVien.getDiem());
+                }
+                return;
+            }
+        }
+        System.out.println("Khong tim thay lop hoc");
+    }
+    
+    public void init() {
+        System.out.println("Quan ly lop hoc");
+        int select = 0;
+        int selectClass = 0;
+        
+        int select2 = 0;
+        
+        boolean isTrue = true;
+        while(isTrue){
+            System.out.println("1. Quan ly lop hoc Online");
+            System.out.println("2. Quan ly lop hoc Ofline");
+            System.out.println("3. Thoat");
+
+            selectClass = sc.nextInt();
+            
+            switch (selectClass) {
+                case 1:
+                    boolean Online = true;
+                    while(Online)
+                    {
+                        System.out.println("1. Them lop hoc Online");
+                        System.out.println("2. Tim lop hoc Online");
+                        System.out.println("3. Tim kiem hoc vien trong lop hoc Online");
+                        System.out.println("4. Xoa lop hoc Online");
+                        System.out.println("5. In danh sach lop hoc Online");
+                        System.out.println("6. In danh sach toan bo hoc vien trong lop Online");
+                        System.out.println("7. Thoat");
+                        select = sc.nextInt();
+                        switch (select) {
+                            case 1:
+                                LopHocOnline x = new LopHocOnline();
+                                x.NhapLopHoc();
+                                themLopHocOnline(x);
+                                break;
+                            case 2:
+                                sc.nextLine();
+                                String ten;
+                                System.out.println("Nhap ten lop can tim: ");
+                                ten = sc.nextLine();
+                                timKiemLopHocOnline(ten);
+                                break;
+                            case 3:
+                                sc.nextLine();
+                                String Tenhv;
+                                System.out.println("Nhap ten hoc vien can tim: ");
+                                Tenhv = sc.nextLine();
+                                timKiemHocVienOnline(Tenhv);
+                                break;
+                            case 4:
+                                sc.nextLine();
+                                String mscx;
+                                System.out.println("Nhap ma so lop can xoa: ");
+                                mscx = sc.nextLine();
+                                xoaLopHocOnline(mscx);
+                                break;
+                            case 5:
+                                inDanhSachLopHocOnline();
+                                break;
+                            case 6:
+                                inDanhSachHocVienOnline();
+                                break;
+                            case 7:
+                                Online = false;
+                                break;
+                        }
+                    }
+                    
+                    break;
+                
+                case 2:
+                    boolean Offline = true;
+                    while(Offline)
+                    {
+                        System.out.println("1. Them lop hoc Offline");
+                        System.out.println("2. Tim lop hoc Offline");
+                        System.out.println("3. Tim kiem hoc vien trong lop hoc Offline");
+                        System.out.println("4. Xoa lop hoc Offline");
+                        System.out.println("5. In danh sach lop hoc Offline");
+                        System.out.println("6. In danh sach toan bo hoc vien trong lop Offline");
+                        System.out.println("7. Thoat");
+                        select2 = sc.nextInt();
+
+                        switch (select2) {
+                            case 1:
+                                LopHocOffline x = new LopHocOffline();
+                                x.NhapLopHoc();
+                                themLopHocOffline(x);
+                                break;
+                            case 2:
+                                sc.nextLine();
+                                String ten;
+                                System.out.println("Nhap ten lop can tim: ");
+                                ten = sc.nextLine();
+                                timKiemLopHocOffline(ten);
+                                break;
+                            case 3:
+                                sc.nextLine();
+                                String Tenhv;
+                                System.out.println("Nhap ten hoc vien can tim: ");
+                                Tenhv = sc.nextLine();
+                                timKiemHocVienOffline(Tenhv);
+                                break;
+                            case 4:
+                                sc.nextLine();
+                                String mscx;
+                                System.out.println("Nhap ma so lop can xoa: ");
+                                mscx = sc.nextLine();
+                                xoaLopHocOffline(mscx);
+                                break;
+                            case 5:
+                                inDanhSachLopHocOffline();
+                                break;
+                            case 6:
+                                inDanhSachHocVienOffline();
+                                break;
+                            case 7:
+                                Offline = false;
+                                break;
+                        }
+                    }
+                    
+                    break;  
+                    
+                case 3:
+                    isTrue = false;
+                    break;
+            }
+        }
+    }
+}
