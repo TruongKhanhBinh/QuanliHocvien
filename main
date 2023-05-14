@@ -1,0 +1,33 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package quanlyhocvien;
+
+import java.util.Scanner;
+public class Main {
+static Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) {
+        
+        QuanLyLopHoc quanLyLopHoc = new QuanLyLopHoc();
+        QuanLyHocVien quanLyHocVien = new QuanLyHocVien();
+        boolean isTrue = true;
+        int select = 0;
+        while(isTrue)
+        {
+            System.out.println("1. Quan Ly Hoc Vien");
+            System.out.println("2. Quan Ly Lop Hoc");
+            System.out.println("3. Thoat");
+            select = sc.nextInt();
+            switch (select) {
+                    case 1: 
+                        quanLyHocVien.init(); break;
+                    case 2:
+                        quanLyLopHoc.init(); break;
+                    case 3: isTrue = false; break;   
+            }            
+        }
+        
+    }
+    
+}
